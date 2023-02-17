@@ -25,6 +25,9 @@ class HomeView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         buildView()
+        API().getAllCards{ cards in
+            print(cards.data)
+        }
     }
 
     required init?(coder: NSCoder) {
