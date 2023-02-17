@@ -9,6 +9,9 @@ import UIKit
 
 class HomeView: UIView {
 
+    weak var delegate: Delegate?
+    var pokemonCards: [PokemonCard] = []
+
     lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -26,7 +29,10 @@ class HomeView: UIView {
         super.init(frame: frame)
         buildView()
         API().getAllCards{ cards in
-            print(cards.data)
+            self.pokemonCards = cards.data
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
         }
     }
 
@@ -53,17 +59,19 @@ extension HomeView: ViewCoding {
 }
 extension HomeView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 50
+        return pokemonCards.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cards = pokemonCards[indexPath.item]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionviewcell", for: indexPath) as! CollectionViewCell
+        cell.label.text = cards.name
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 170, height: 250)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("pertou")
+        delegate?.navigate(card: pokemonCards[0])
     }
 }

@@ -14,12 +14,18 @@ class HomeViewController: UIViewController {
     override func loadView() {
         super.loadView()
         view = homeView
+        homeView.delegate = self
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
-
+}
+extension HomeViewController: Delegate{
+    func navigate(card: PokemonCard) {
+        let nextViewController = CardViewController()
+        nextViewController.cardView.configureView(with: card)
+        navigationController?.pushViewController(nextViewController, animated: true)
+    }
 }
 
