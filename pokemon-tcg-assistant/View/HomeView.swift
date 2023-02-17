@@ -72,6 +72,7 @@ extension HomeView: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
         return CGSize(width: 170, height: 250)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.navigate(card: pokemonCards[0])
+        let card = pokemonCards[indexPath.item]
+        delegate?.navigate(card: card)
     }
 }
