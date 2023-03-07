@@ -21,11 +21,17 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
     }
 }
-extension HomeViewController: Delegate{
+extension HomeViewController: HomeViewDelegate {
     func navigate(card: PokemonCard) {
         let nextViewController = CardViewController()
+        nextViewController.cardView.delegate = self
         nextViewController.cardView.configureView(with: card)
-        navigationController?.pushViewController(nextViewController, animated: true)
+        present(nextViewController, animated: true)
+    }
+}
+extension HomeViewController: CardViewDelegate {
+    func dismiss() {
+        dismiss(animated: true)
     }
 }
 

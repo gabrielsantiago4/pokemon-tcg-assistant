@@ -23,7 +23,10 @@
 		364BBF83299D60EB00AF01DD /* ViewCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364BBF82299D60EB00AF01DD /* ViewCoding.swift */; };
 		364BBF87299DCEFD00AF01DD /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364BBF86299DCEFD00AF01DD /* CollectionViewCell.swift */; };
 		3669D238299F23C500897C72 /* PokemonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3669D237299F23C500897C72 /* PokemonCard.swift */; };
-		36BB2921299F906F00FF926E /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB2920299F906F00FF926E /* Delegate.swift */; };
+		366FFCA329ACE96000775478 /* CardViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366FFCA229ACE96000775478 /* CardViewDelegate.swift */; };
+		36BB2921299F906F00FF926E /* HomeViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB2920299F906F00FF926E /* HomeViewDelegate.swift */; };
+		36F3435629B75859003983BC /* HomeViewRefactored.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F3435529B75859003983BC /* HomeViewRefactored.swift */; };
+		36F3435A29B76125003983BC /* HomeViewControllerRefactored.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F3435929B76125003983BC /* HomeViewControllerRefactored.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +67,10 @@
 		364BBF82299D60EB00AF01DD /* ViewCoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCoding.swift; sourceTree = "<group>"; };
 		364BBF86299DCEFD00AF01DD /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		3669D237299F23C500897C72 /* PokemonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCard.swift; sourceTree = "<group>"; };
-		36BB2920299F906F00FF926E /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
+		366FFCA229ACE96000775478 /* CardViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewDelegate.swift; sourceTree = "<group>"; };
+		36BB2920299F906F00FF926E /* HomeViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewDelegate.swift; sourceTree = "<group>"; };
+		36F3435529B75859003983BC /* HomeViewRefactored.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewRefactored.swift; sourceTree = "<group>"; };
+		36F3435929B76125003983BC /* HomeViewControllerRefactored.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerRefactored.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +98,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3603089629B771BD00C86F92 /* HomeSceneRefactored */ = {
+			isa = PBXGroup;
+			children = (
+				36F3435529B75859003983BC /* HomeViewRefactored.swift */,
+				36F3435929B76125003983BC /* HomeViewControllerRefactored.swift */,
+				364BBF86299DCEFD00AF01DD /* CollectionViewCell.swift */,
+			);
+			path = HomeSceneRefactored;
+			sourceTree = "<group>";
+		};
 		364BBF39299D509A00AF01DD = {
 			isa = PBXGroup;
 			children = (
@@ -115,9 +131,10 @@
 		364BBF44299D509A00AF01DD /* pokemon-tcg-assistant */ = {
 			isa = PBXGroup;
 			children = (
+				3603089629B771BD00C86F92 /* HomeSceneRefactored */,
+				36F3435729B7585F003983BC /* HomeSceneDiscarded */,
+				36F3435829B75885003983BC /* CardScene */,
 				364BBF7A299D50B700AF01DD /* Model */,
-				364BBF78299D50AB00AF01DD /* View */,
-				364BBF79299D50B200AF01DD /* Controller */,
 				364BBF7B299D50D300AF01DD /* Services */,
 				364BBF7D299D511F00AF01DD /* Delegates */,
 				364BBF7C299D50DD00AF01DD /* Utils */,
@@ -144,25 +161,6 @@
 				364BBF6B299D509B00AF01DD /* pokemon_tcg_assistantUITestsLaunchTests.swift */,
 			);
 			path = "pokemon-tcg-assistantUITests";
-			sourceTree = "<group>";
-		};
-		364BBF78299D50AB00AF01DD /* View */ = {
-			isa = PBXGroup;
-			children = (
-				364BBF7E299D60D100AF01DD /* HomeView.swift */,
-				362BF862299FE80700E15AD3 /* CardView.swift */,
-				364BBF86299DCEFD00AF01DD /* CollectionViewCell.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		364BBF79299D50B200AF01DD /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				364BBF49299D509A00AF01DD /* HomeViewController.swift */,
-				362BF864299FE81A00E15AD3 /* CardViewController.swift */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		364BBF7A299D50B700AF01DD /* Model */ = {
@@ -194,9 +192,28 @@
 			children = (
 				364BBF47299D509A00AF01DD /* SceneDelegate.swift */,
 				364BBF45299D509A00AF01DD /* AppDelegate.swift */,
-				36BB2920299F906F00FF926E /* Delegate.swift */,
+				36BB2920299F906F00FF926E /* HomeViewDelegate.swift */,
+				366FFCA229ACE96000775478 /* CardViewDelegate.swift */,
 			);
 			path = Delegates;
+			sourceTree = "<group>";
+		};
+		36F3435729B7585F003983BC /* HomeSceneDiscarded */ = {
+			isa = PBXGroup;
+			children = (
+				364BBF7E299D60D100AF01DD /* HomeView.swift */,
+				364BBF49299D509A00AF01DD /* HomeViewController.swift */,
+			);
+			path = HomeSceneDiscarded;
+			sourceTree = "<group>";
+		};
+		36F3435829B75885003983BC /* CardScene */ = {
+			isa = PBXGroup;
+			children = (
+				362BF864299FE81A00E15AD3 /* CardViewController.swift */,
+				362BF862299FE80700E15AD3 /* CardView.swift */,
+			);
+			path = CardScene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,17 +346,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36F3435629B75859003983BC /* HomeViewRefactored.swift in Sources */,
 				364BBF4A299D509A00AF01DD /* HomeViewController.swift in Sources */,
 				364BBF50299D509A00AF01DD /* pokemon_tcg_assistant.xcdatamodeld in Sources */,
 				364BBF87299DCEFD00AF01DD /* CollectionViewCell.swift in Sources */,
 				364BBF46299D509A00AF01DD /* AppDelegate.swift in Sources */,
 				364BBF7F299D60D100AF01DD /* HomeView.swift in Sources */,
+				36F3435A29B76125003983BC /* HomeViewControllerRefactored.swift in Sources */,
 				364BBF83299D60EB00AF01DD /* ViewCoding.swift in Sources */,
-				36BB2921299F906F00FF926E /* Delegate.swift in Sources */,
+				36BB2921299F906F00FF926E /* HomeViewDelegate.swift in Sources */,
 				364BBF81299D60DD00AF01DD /* API.swift in Sources */,
 				362BF865299FE81A00E15AD3 /* CardViewController.swift in Sources */,
 				3669D238299F23C500897C72 /* PokemonCard.swift in Sources */,
 				362BF863299FE80700E15AD3 /* CardView.swift in Sources */,
+				366FFCA329ACE96000775478 /* CardViewDelegate.swift in Sources */,
 				364BBF48299D509A00AF01DD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

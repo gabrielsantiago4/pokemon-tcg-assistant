@@ -8,6 +8,6 @@
 import Foundation
 
 
-protocol Delegate: AnyObject {
+protocol HomeViewDelegate: AnyObject {
     func navigate(card: PokemonCard)
 }
