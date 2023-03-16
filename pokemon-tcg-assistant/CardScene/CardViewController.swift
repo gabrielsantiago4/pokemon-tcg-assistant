@@ -1,25 +1,22 @@
 //
-//  ViewController.swift
+//  CardViewController.swift
 //  pokemon-tcg-assistant
 //
-//  Created by Gabriel Santiago on 15/02/23.
+//  Created by Gabriel Santiago on 17/02/23.
 //
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class CardViewController: UIViewController {
 
-    let homeView = HomeView()
+    var cardView = CardView()
 
     override func loadView() {
         super.loadView()
-        view = homeView
+        view = cardView
     }
-
     override func viewDidLoad() {
         super.viewDidLoad()
+
     }
-
-
 }
-
