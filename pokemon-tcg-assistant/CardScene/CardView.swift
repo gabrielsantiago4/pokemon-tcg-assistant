@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CardView: UIView {
 
@@ -45,8 +46,9 @@ class CardView: UIView {
     }
     
     func configureView(with card: PokemonCard){
-        testImage.image = UIImage(named: card.name)
-        label.text = card.name
+//        testImage.image = UIImage(named: card.name)
+        let url = URL(string: card.images.large)
+        testImage.kf.setImage(with: url)
     }
 
     @objc func buttonAction () {

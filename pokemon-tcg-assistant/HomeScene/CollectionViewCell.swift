@@ -6,16 +6,10 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CollectionViewCell: UICollectionViewCell {
 
-    lazy var label: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "CARD"
-        label.textColor = .black
-        return label
-    }()
     lazy var testImage: UIImageView = {
         let image = UIImageView()
         image.layer.cornerRadius = 8
@@ -33,17 +27,18 @@ class CollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    func configCell(with card: PokemonCard) {
+        let url = URL(string: card.images.small)
+        testImage.kf.setImage(with: url)
+    }
+
 }
 extension CollectionViewCell: ViewCoding{
     func setupHierarchy() {
-        contentView.addSubview(label)
         contentView.addSubview(testImage)
     }
     func configureConstraints() {
         NSLayoutConstraint.activate([
-            label.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-
             testImage.topAnchor.constraint(equalTo: contentView.topAnchor),
             testImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             testImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -51,6 +46,6 @@ extension CollectionViewCell: ViewCoding{
         ])
     }
     func addConfigurations() {
-        contentView.backgroundColor = .red
+        contentView.backgroundColor = .systemBackground
     }
 }

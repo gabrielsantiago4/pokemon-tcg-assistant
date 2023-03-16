@@ -7,9 +7,9 @@
 
 import UIKit
 
-class HomeViewControllerRefactored: UIViewController {
+class HomeViewController: UIViewController {
 
-    var homeViewRefactored = HomeViewRefactored()
+    var homeViewRefactored = HomeView()
     var pokemonCards: [PokemonCard] = []
 
     override func loadView() {
@@ -30,22 +30,19 @@ class HomeViewControllerRefactored: UIViewController {
     }
 }
 
-extension HomeViewControllerRefactored: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return pokemonCards.count
     }
-
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let card = pokemonCards[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionviewcell", for: indexPath) as! CollectionViewCell
-        cell.label.text = card.name
+        cell.configCell(with: card)
         return cell
     }
-
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 150, height: 210)
     }
-
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let card = pokemonCards[indexPath.row]
         let nextViewController = CardViewController()
@@ -54,7 +51,7 @@ extension HomeViewControllerRefactored: UICollectionViewDelegate, UICollectionVi
         present(nextViewController, animated: true)
     }
 }
-extension HomeViewControllerRefactored: CardViewDelegate{
+extension HomeViewController: CardViewDelegate{
     func dismiss() {
         dismiss(animated: true)
     }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewRefactored: UIView {
+class HomeView: UIView {
 
     lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
@@ -29,7 +29,7 @@ class HomeViewRefactored: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
-extension HomeViewRefactored: ViewCoding {
+extension HomeView: ViewCoding {
 
     func setupHierarchy() {
         addSubview(collectionView)
